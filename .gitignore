@@ -86,3 +86,14 @@ Icon?
 ._*
 *.sublime-workspace
 *.sublime-project
+
+# Backend datasets
+backend/data/raw/
+backend/data/processed/
+
+# Large data files
+*.csv
+*.parquet
+*.jsonl
+*.pkl
+*.joblib
