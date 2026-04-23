@@ -10,8 +10,7 @@ class Settings(BaseSettings):
 	api_prefix: str = "/api/v1"
 	debug: bool = False
 
-	# Database
-	postgres_dsn: str = Field(..., env="POSTGRES_DSN")
+	
 	pgvector_enabled: bool = True
  
     #embeddings
