@@ -69,7 +69,7 @@ coverage/
 tmp/
 .tox/
 # ChromaDB and vectorstore binaries
-backend/db/chroma_db/
+#backend/db/chroma_db/
 # Large raw data files
 backend/data/raw/
 # Keep small bootstrap datasets
