@@ -3,7 +3,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from app.core.settings import settings
 from app.api.v1.routes import api_router
-from app.services.vector_bootstrap import initialize_vector_db
+
 
 app = FastAPI(
     title="Property Investment Analyzer API",
@@ -22,13 +22,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")
-async def startup_event():
-    try:
-        await initialize_vector_db()
-        print("Vector DB initialized successfully")
-    except Exception as e:
-        print(f"Startup initialization failed: {e}")
+# --- Vector DB bootstrap disabled: ChromaDB is now committed and persistent ---
+# from app.services.vector_bootstrap import initialize_vector_db
+#
+# @app.on_event("startup")
+# async def startup_event():
+#     try:
+#         await initialize_vector_db()
+#         print("Vector DB initialized successfully")
+#     except Exception as e:
+#         print(f"Startup initialization failed: {e}")
 
 # Health endpoint for Render
 @app.get("/")
