@@ -68,6 +68,12 @@ coverage/
 .cache/
 tmp/
 .tox/
+# ChromaDB and vectorstore binaries
+backend/db/chroma_db/
+# Large raw data files
+backend/data/raw/
+# Keep small bootstrap datasets
+!backend/data/bootstrap/
 
 # =========================
 # IDE FILES

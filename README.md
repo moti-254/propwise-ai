@@ -120,6 +120,22 @@ Response:
 
 ---
 
+## Vector Database Bootstrapping (Deployment-Ready)
+
+- **ChromaDB is not stored in Git**. On deployment, the backend automatically rebuilds the vector DB if missing.
+- A small, clean sample dataset is tracked in `backend/data/bootstrap/` (e.g. `nairobi_sample.csv`).
+- On startup, FastAPI runs a bootstrap routine (`initialize_vector_db`) that:
+  - Checks if ChromaDB exists in `backend/db/chroma_db/`
+  - If missing, ingests the sample dataset and rebuilds embeddings
+- This ensures deployments (e.g. Render, Vercel) always have a working vector DB, even with ephemeral filesystems.
+- Large raw datasets and ChromaDB binaries are gitignored for fast, safe deploys.
+
+**To add more data:**
+- Place additional small CSVs in `backend/data/bootstrap/` and update `BOOTSTRAP_DATASETS` in `app/ingestion/ingest_bootstrap.py`.
+- For production-scale data, migrate to an external object store or production vector DB (see README for options).
+
+---
+
 ## Contributing
 
 Pull requests welcome! Please open issues for bugs or feature requests.
