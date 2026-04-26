@@ -6,7 +6,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from app.core.settings import settings
 from app.api.v1.routes import api_router
-from app.services.vector_bootstrap import initialize_vector_db
+#from app.services.vector_bootstrap import initialize_vector_db
 
 app = FastAPI(
     title="Property Investment Analyzer API",
@@ -27,14 +27,14 @@ app.add_middleware(
 )
 
 # --- Conditional Vector DB Bootstrap ---
-import os
-@app.on_event("startup")
-async def startup_event():
-    bootstrap_enabled = os.getenv("RUN_VECTOR_BOOTSTRAP", "false").lower()
-    if bootstrap_enabled == "true":
-        print("[Startup] Running vector DB bootstrap...")
-        await initialize_vector_db()
-        print("[Startup] Vector DB bootstrap complete.")
+#import os
+#@app.on_event("startup")
+#async def startup_event():
+#    bootstrap_enabled = os.getenv("RUN_VECTOR_BOOTSTRAP", "false").lower()
+#    if bootstrap_enabled == "true":
+#        print("[Startup] Running vector DB bootstrap...")
+#        await initialize_vector_db()
+#        print("[Startup] Vector DB bootstrap complete.")
 
 # Health endpoint for Render
 @app.get("/")
