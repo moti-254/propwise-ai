@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "https://propwise-ai-xco5.onrender.com", //"http://localhost:8000/api/v1",
+  baseURL:process.env.NEXT_PUBLIC_API_URL || "https://localhost:8000/api/v1",
 });
 
 export async function analyzeProperty(payload: any) {
